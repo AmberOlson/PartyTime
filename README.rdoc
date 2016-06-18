@@ -1,28 +1,10 @@
-== README
+This is my first ruby project. It is a party planning site.  Where users can:
+1) Create and invite friends to join parties
+2) Send reminder emails the day before with up to-date weather information
+3) Organize friends into easy invite groups 
+4) Update user profile, including user profile image
+5) Set invited users as party administrators
+6) Comment on parties
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails, Sidekiq, Redis, MySQL
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
