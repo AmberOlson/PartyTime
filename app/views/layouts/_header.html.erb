@@ -1,0 +1,22 @@
+<header class ="header">
+  <div class="col-md-1">
+    <img alt="Logo"  width="50" height="45" src="/assets/party_logo.jpeg" />
+  </div>
+  <h1> Party Time </h1>
+
+  <nav class="navbar navbar-default">
+    <ul class="nav nav-pills">
+      <li role="presentation" class="<%= active_class(root_path) %>"> <%= link_to "Home", root_path %> </li>
+      <% if user_signed_in? %>
+        <li role="presentation" class="<%= active_class(user_path(current_user)) %>"> <%= link_to "User Profile", user_path(current_user) %> </li>
+        <li role="presentation" class="<%= active_class(new_event_path) %>"><%= link_to "Create Event", new_event_path %></li>
+        <li role="presentation" class="<%= active_class(user_relationship_path(current_user)) %>"><%= link_to "Manage Relationship", user_relationship_path(current_user) %></li>
+        <li role="presentation" > <%= link_to('Log Out', destroy_user_session_path, :method => :delete) %> </li>
+      <% else %>
+        <li role="presentation" class="<%= active_class(new_user_session_path) %>"> <%= link_to "Log in", new_user_session_path %> </li>
+        <li role="presentation" class="<%= active_class(new_user_registration_path) %>"> <%= link_to('Sign Up', new_user_registration_path)  %>  </li>
+      <% end %>
+    </ul>
+  </nav>
+
+</header>

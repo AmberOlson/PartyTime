@@ -1,0 +1,18 @@
+
+    Hey, <%= @user %>
+
+      You have been invited to Title: <%= @event.title %>,
+    Location:  <%= @event.street_number %>,
+      <%= @event.route %>
+      <%= @event.city %>
+      <%= @event.provence %>
+      <%= @event.country %>
+      <%= @event.postal_code %>
+                                Date: <%= @event.date %>,
+                                Time: <%= @event.time %>,
+                                Description: <%= @event.description %>
+
+      Tomorrows temperature in <%=@event.city %> is: <%=@temp_f %>
+      To login to the event, just follow this link: <%=  event_url(@event) %>.
+
+    Thanks and have a great day!

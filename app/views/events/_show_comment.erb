@@ -1,0 +1,31 @@
+<div class="comments_show">
+  <h2>Comments:</h2>
+  <% @event.comments.each do |comment| %>
+    <div id="<%= dom_id(comment) %>">
+      <% if comment.user_id != nil %>
+        <div class ="row">
+          <div class="col-md-1">
+            <%= image_tag comment.user.picture.url, :class => "user_avatar" if comment.user.picture? %>
+          </div>
+
+          <div class="col-md-8">
+            <p>
+              <strong>Commenter:</strong>
+                <%= comment_email_or_name(comment, @user) %>
+              </p>
+
+            <p>
+              <strong>Comment:</strong>
+              <%= comment.text %>
+            </p>
+
+            <p>
+              <%= link_to 'Destroy Comment', [comment.event, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+            </p>
+          </div>
+        </div>
+        <br>
+      <% end %>
+    </div>
+  <% end %>
+</div>

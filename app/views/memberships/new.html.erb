@@ -1,0 +1,60 @@
+<%= render 'events/event_header' %>
+
+<div class="col-xs-6 col-sm-2">
+  <%= render 'events/event_membership' %>
+</div>
+
+<div class="col-md-8">
+  <h1> Invite Guests </h1>
+  <%= form_tag(event_memberships_path(@event), :method=>'post')  do %>
+
+  <p>
+     Email:
+     <%= email_field_tag "user_email" %>
+   </p>
+
+   <h3> Add friends you already have! </h3>
+
+   <% @classifications.each do |classification| %>
+   <div id= "<%= classification[:id] %>", class = "<%= classification[:class] %>">
+     <h1>  <%= classification[:title] %> </h1>
+     <button type="button" id="check_all_other" class="btw"><%="Select All"%></button>
+       <% @relationship.each do |relationship| %>
+         <% if relationship.classification ==  classification[:classification] %>
+           <%= render 'check_box', :relationship => relationship %>
+         <% end %>
+     <% end %>
+   </div>
+   <% end %>
+
+   <%= submit_tag 'Invite User' %>
+
+
+  <% end %>
+
+<script>
+  $(document).ready(function(){
+    $(":button").click(function (){
+
+      var cbxs = $(this).parent("div").find('input[type="checkbox"]')
+
+
+        console.log("button pushed")
+        // var cbxs = $('#classification_other').find('input[type="checkbox"]')
+        if(cbxs.prop("checked")){
+        // if they are selected,unchecking all the checkbox
+        cbxs.prop("checked",false);
+    }
+    else {
+        // if they are not selected, checking all the checkbox
+        cbxs.prop("checked",true);
+      }
+        // cbxs.prop('checked', true);
+    });
+});
+</script>
+
+
+
+
+</div>

@@ -1,0 +1,20 @@
+
+<div class="panel panel-info" id= "<%= dom_id(event) %>">
+  <div class="panel-heading"><%= event.title %></div>
+  <div class="panel-body">
+    <p> Location: <%= event.street_number %>
+                  <%= event.route %>
+                  <%= event.city %>
+                  <%= event.provence %>
+                  <%= event.country %>
+                  <%= event.postal_code %> 
+    </p>
+
+
+
+    <p> Date: <%= event.date.strftime("%Y-%m-%d") %> </p>
+    <p> Time: <%= event.time.strftime("%I:%M%P") %></p>
+    <p> Description: <%= event.description %></p>
+    <%= link_to 'Show', event_path(event) %>
+  </div>
+</div>

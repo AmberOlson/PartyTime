@@ -1,0 +1,45 @@
+//general style
+
+ul
+{
+    list-style-type: none;
+}
+
+// Styles for heading
+
+
+//styles for user page
+.user_avatar {
+    max-width: 100px;
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .event_membership {
+    background-color: #5bc0de;
+    opacity:0.6;
+  }
+
+  // style for changing the classification of ht erelationship with friends
+
+  .classification_other {
+    background-color: #cceeff;
+  }
+
+  .classification_family {
+    background-color: #ffb3cc;
+  }
+
+  .classification_friend {
+    background-color: #b3ffcc;
+  }
+
+  .classification_school {
+    background-color: #fff0b3;
+  }
+
+  .classification_coworker {
+    background-color: #ffb3b3;
+  }

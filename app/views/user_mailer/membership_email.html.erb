@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi, <%= @user %></h1>
+    <p>
+      You have been invited to <%= @event.title %> on PartyTime.com.<br>
+    </p>
+    <p>
+      To login to the site, just follow this link: <%=  new_user_session_url  %>.
+    </p>
+    <p> Have a great day!</p>
+  </body>
+</html>

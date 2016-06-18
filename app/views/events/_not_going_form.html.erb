@@ -1,0 +1,4 @@
+<%= form_for @membership, url: event_membership_path(:event_id => @event.id, :id => @membership.id), remote: true do |f| %>
+  <div><%= hidden_field_tag :status, Membership::RSVP_NOT_GOING %></div>
+  <%= f.submit "Not Going", class: "btn btn-warning" %>
+<% end %>

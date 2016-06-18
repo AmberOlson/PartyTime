@@ -1,0 +1,17 @@
+<%= render 'event_header' %>
+
+
+<div class="col-md-3">
+  <%= render 'event_membership' %>
+</div>
+
+<div class="col-md-8">
+  <h3> Location: <%= @event.street_number %> <%= @event.route %> <%= @event.city %><h3>
+  <h3> Date: <%= @event.date.strftime("%Y-%m-%d") %> </h3>
+  <h3> Time: <%= @event.time.strftime("%I:%M%P") %> </h3>
+  <h3> Description: <%= @event.description %> </h3>
+  <br>
+  <%= render 'layouts/add_comment' %>
+  <br>
+  <%= render 'show_comment' %>
+</div>

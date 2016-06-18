@@ -1,0 +1,3 @@
+<%= form_for @membership, url: event_membership_path(:event_id => @event.id, :id => @membership.id), html: { method: :delete }, remote: true do |f| %>
+<%= f.submit "Remove me from list", class: "btn btn-danger" %>
+<% end %>

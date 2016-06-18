@@ -1,0 +1,7 @@
+
+Welcome to partyTime.com, <%= @user %>
+
+You have been invited to <%= @event.title %> on PartyTime.com.
+To login to the site, just follow this link: <%=  welcome_url(:membership_id => @membership.invitiation_token) %>.
+
+Thanks for your interest and have a great day!

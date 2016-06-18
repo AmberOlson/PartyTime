@@ -1,0 +1,36 @@
+<h1> Editing Profile of <%= email_or_name(@user) %> </h1>
+
+<%= form_for @user, html: { multipart: true } do |f| %>
+
+<%= render 'layouts/error', object: f.object %>
+
+ <p>
+   <%= f.label :name %>
+   <%= f.text_field :name %>
+ </p>
+
+ <p>
+   <%= f.label :email %>
+   <%= f.email_field :email %>
+ </p>
+
+ <span class="picture">
+ <%= f.label :picture %><br>
+  <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+ </span>
+
+ <p>
+   <%= f.submit "Submit"%>
+ </p>
+
+ <% end %>
+
+
+ <script type="text/javascript">
+ $('#user_picture').bind('change', function() {
+   var size_in_megabytes = this.files[0].size/1024/1024;
+   if (size_in_megabytes > 5) {
+     alert('Maximum file size is 5MB. Please choose a smaller file.');
+   }
+ });
+ </script>

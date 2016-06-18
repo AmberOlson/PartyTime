@@ -1,0 +1,39 @@
+<h1> <%= email_or_name(@user) %> Profile Page </h1>
+
+<div class="col-xs-6 col-sm-2">
+  <h3> Name: </h3>
+  <%= @user.name %> </h3>
+
+  <br>
+  <h3> Email: </h3>
+  <%= @user.email %> </h3>
+
+  <%= image_tag @user.picture.url, :class => "user_avatar" if @user.picture? %>
+  <br>
+
+  <button type="button" class="btn btn-info"><%= link_to "Update User Info", edit_user_path(@user) %></button>
+</div>
+
+
+<div class="col-md-8">
+
+<% if @user.has_going_memberships? %>
+<h1> Events <%= email_or_name(@user) %> is attending </h1>
+  <div class = "status_going">
+    <%= render @user.going_events %>
+  </div>
+<%end%>
+
+<% if @user.has_invited_memberships? %>
+<h1> Events <%= email_or_name(@user) %> is invited </h1>
+  <div class = "status_going">
+    <%= render @user.invited_events %>
+  </div>
+<%end%>
+
+<% if @user.has_not_going_memberships? %>
+<h1> Events <%= email_or_name(@user) %> is not attending </h1>
+  <div class = "status_going">
+    <%= render @user.not_going_events %>
+  </div>
+<%end%>

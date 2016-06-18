@@ -1,0 +1,12 @@
+<h1> <%= @event.title %> </h1>
+
+<% if @membership.admin %>
+  <%= render 'events/admin_link' %>
+
+<% else %>
+  <ul class="nav nav-pills">
+    <li> <%= render 'events/going_form' %></li>
+    <li><%= render 'events/not_going_form' %></li>
+    <li><%= render 'events/remove_form' %></li>
+  </ul>
+<% end %>

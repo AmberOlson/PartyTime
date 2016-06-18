@@ -1,0 +1,25 @@
+<%= render 'events/event_header' %>
+
+<div class="col-xs-6 col-sm-2">
+  <%= render 'events/event_membership' %>
+</div>
+
+<div class="col-md-8">
+  <h1> Add Admins </h1>
+  <%= form_tag event_admin_path do %>
+    <ul>
+      <% @membership.each do |membership| %>
+        <li>
+
+          <% if membership.user_id? && !membership.admin%>
+            <%= hidden_field_tag('seen[]', membership.id) -%>
+            <%= check_box_tag 'activated[]', membership.id -%>
+            <%= membership_email_or_name(membership, @user) %>
+          </li>
+        <% end %>
+      <% end %>
+
+      <%= submit_tag("Save Admin") %>
+    </ul>
+  <% end %>
+</div>
