@@ -1,4 +1,2 @@
-
-<%= hidden_field_tag('seen[]', relationship.id) -%>
-<%= check_box_tag 'activated[]', relationship.id -%>
-<%= relationship.friend %>
+<%= check_box_tag "activated[#{relationship.id}]" %>
+<%= label_tag "activated_#{relationship.id}", relationship.friend %>

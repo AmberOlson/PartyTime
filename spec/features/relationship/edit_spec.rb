@@ -10,16 +10,16 @@ describe 'editing relationship' do
   end
 
   it "allows you to change the classification of relationship you have with frinds" do
-    visit "/users/1/relationship"
+    visit "/relationship/edit"
     expect(page).to have_content("user1@example.com")
     page.should have_css('div#classification_other', :text == 'user1@example.com')
     select 'Friend', :from => 'classification'
-    find(:css, "#activated_[value='1']").set(true)
-    find(:css, "#activated_[value='3']").set(true)
+    check('relationship2@email.com')
+    check('user1@example.com')
     click_button 'Update Friendship'
 
     visit '/events/1'
-    visit "/users/1/relationship"
+    visit "/relationship/edit"
     expect(page).to have_content("user1@example.com")
     page.should have_css('div#classification_friend', :text == 'user1@example.com')
     page.should have_css('div#classification_friend', :text == "relationship3@email.com")

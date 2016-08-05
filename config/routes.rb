@@ -6,10 +6,8 @@ PartyTime::Application.routes.draw do
   root 'static_pages#home'
 
   resources :tests, :only => [:index]
-  resources :users, :only => [:show, :edit, :update] do
-    get "relationship" => 'relationships#edit'
-    post "relationship" => 'relationships#update'
-  end
+  resource :relationship, only: %i(edit update)
+  resources :users, :only => [:show, :edit, :update]
   get "welcome" => 'users#redirect_page'
   resources :events do
     get "admin" => 'admin#new'
