@@ -24,7 +24,7 @@ class MembershipsController < ApplicationController
       if activated_emails
         activated_emails.each do |email|
           @friend = User.find_by_email(email)
-          if unique(@event, @friend)
+          if !friend_of?(@event, @friend)
             make_membership()
             @membership.update_membership_attributes(@friend)
             UserMailer.membership_email(@friend.email, @event).deliver
@@ -33,7 +33,7 @@ class MembershipsController < ApplicationController
       end
     end
 
-    if @userinvited && unique(@event, @userinvited)
+    if @userinvited && !friend_of?(@event, @userinvited)
       make_membership()
       @membership.update_membership_attributes(@userinvited)
       @user.create_relationship(@userinvited)
@@ -97,13 +97,9 @@ end
     @membership.save
   end
 
-  def unique(event, user)
-    membership = Membership.where("user_id = ? AND event_id = ?", user.id, event.id)
-    if membership.count > 0
-      false
-    else
-      true
-    end
+  def friend_of?(event, user)
+      Membership.where(user_id: user.id, event_id: event.id).any?
+
   end
 
 

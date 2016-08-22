@@ -12,13 +12,13 @@ class CommentsController < ApplicationController
         flash[:notice] = "Error, comment must be longer than 2 letters"
         redirect_to event_path(@event)
       end
-  end
+    end
 
   def destroy
     @comment = @event.comments.find(params[:id])
     @comment.destroy
     redirect_to event_path(@event)
- end
+  end
 
   private
     def comment_params
