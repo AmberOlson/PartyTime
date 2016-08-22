@@ -17,8 +17,7 @@ class Membership < ActiveRecord::Base
 
   # when a user invites another user to their event this update the membership to have status as invited and the user_id of the user invited
     def update_membership_attributes(user)
-      self.update_attribute(:user_id, user.id)
-      self.update_attribute(:status, RSVP_INVITED)
+      self.update_attributes(user_id: user.id, status: RSVP_INVITED)
       self.save
     end
 
