@@ -9,7 +9,7 @@ describe Relationship do
       expect(event.title).to eq("Party11")
       user = FactoryGirl.create(:user)
       user_invited = FactoryGirl.create(:user, :email => "example2@email.com")
-      relationship = user.createrelationship(user_invited)
+      relationship = user.create_relationship(user_invited)
       expect(relationship.friend).to eq user_invited.email
     end
   end

@@ -36,7 +36,7 @@ class MembershipsController < ApplicationController
     if @userinvited && unique(@event, @userinvited)
       make_membership()
       @membership.update_membership_attributes(@userinvited)
-      @user.createrelationship(@userinvited)
+      @user.create_relationship(@userinvited)
       UserMailer.membership_email(@userinvited.email, @event).deliver
       #redirect_to event_path(@event)
       #return
