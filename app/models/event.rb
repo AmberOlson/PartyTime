@@ -13,10 +13,11 @@ class Event < ActiveRecord::Base
 # when a user creates a event this creates the users membership to that event
 # automatically sets user as the admin and status going
   def create_admin_membership(current_user)
-    membership = memberships.create(user_id: current_user.id)
-    membership.toggle!(:admin)
-    membership.update_attribute(:status, Membership::RSVP_GOING)
-    return membership
+    memberships.create(
+      user_id: current_user.id,
+      admin: true,
+      status: Membership::RSVP_GOING
+    )
   end
 
   def event_invited_memberships?

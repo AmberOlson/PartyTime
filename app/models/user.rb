@@ -28,26 +28,14 @@ class User < ActiveRecord::Base
     memberships.invited.size > 0
   end
 
-
-# this determines if the user has already has a membership associated with a certain event
-  def unique(event, user)
-    membership = Membership.where("user_id = ? AND event_id = ?", user.id, event.id)
-    if membership.count > 0
-      false
-    else
-      true
-    end
+  # this determines if the user has already has a membership associated with a certain event
+  def member_of?(event)
+    Membership.where(user_id: id, event_id: event.id).any?
   end
 
 #creates an initial relationship between and user and an invited friend.
-  def createrelationship(user_invited)
-    #friendship = Relationship.where("user_id = ? AND friend = ?", self, user_invited.email)
-    #if friendship.empty?
-      relationship = relationships.create
-      relationship.update_attribute(:friend, user_invited.email)
-      relationship.save
-      return relationship
-  #  end
+  def create_relationship(user_invited)
+    relationships.create!(friend: user_invited.email)
   end
 
   private
