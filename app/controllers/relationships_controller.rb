@@ -15,19 +15,14 @@ class RelationshipsController < ApplicationController
   def update
     classification_update = params[:classification]
 
-    if request.post?
-      activated_ids = params[:activated].collect {|id| id.to_i} if params[:activated]
-      seen_ids = params[:seen].collect {|id| id.to_i} if params[:seen]
+    activated_ids = params[:activated].keys if params[:activated]
 
-      if seen_ids
-        activated_ids.each do |id|
-          r = Relationship.find_by_id(id)
-          r.update_attribute(:classification, classification_update)
-          r.save
-        end
-      end
+    activated_ids.each do |id|
+      r = Relationship.find_by_id(id)
+      r.update_attribute(:classification, classification_update)
+      r.save
     end
-    redirect_to user_relationship_path
+    redirect_to edit_relationship_path
   end
 
 

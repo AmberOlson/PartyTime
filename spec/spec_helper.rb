@@ -22,7 +22,7 @@ RSpec.configure do |config|
    config.include LoginHelpers, type: :feature
    config.include FactoryGirl::Syntax::Methods
    config.before(:each) do
-     Sidekiq::Worker.clear_all
+     #Sidekiq::Worker.clear_all
    end
 
   # ## Mock Framework

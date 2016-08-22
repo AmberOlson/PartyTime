@@ -61,3 +61,8 @@ end
 # Use debugger
 #gem 'debugger', group: [:development, :test]
 gem 'byebug', group: [:development, :test]
+
+gem 'pry-rails'
+gem 'binding_of_caller'
+gem 'pry-stack_explorer'
+gem 'quiet_assets'
