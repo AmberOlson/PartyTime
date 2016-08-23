@@ -1,0 +1,16 @@
+<div>
+    <%= form_for([@event, @event.comments.build]) do |f| %>
+    <%= render 'layouts/error', object: f.object %>
+
+      <% hidden_field_tag(:user_id, current_user.email) %>
+      <% hidden_field_tag(:event_id, @event.id) %>
+    <p>
+      <h2><%= f.label :text, "Add a comment:" %></h2>
+      <br>
+      <%= f.text_area :text %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+<div>

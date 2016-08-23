@@ -12,7 +12,6 @@
         <li>
 
           <% if membership.user_id? && !membership.admin%>
-            <%= hidden_field_tag('seen[]', membership.id) -%>
             <%= check_box_tag 'activated[]', membership.id -%>
             <%= membership_email_or_name(membership, @user) %>
           </li>

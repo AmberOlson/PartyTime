@@ -2,6 +2,7 @@ require "spec_helper"
 
 describe "static_pages/home" do
   it "displays welcome message" do
+    allow(view).to receive(:user_signed_in?).and_return(false)
     render
     expect(rendered).to include("Welcome")
   end
