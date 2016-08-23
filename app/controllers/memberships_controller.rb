@@ -18,28 +18,24 @@ class MembershipsController < ApplicationController
     @userinvited = User.find_by(email: params[:user_email].downcase)
     @user = current_user
 
-    if request.post?
       activated_emails = params[:activated].collect if params[:activated]
 
       if activated_emails
-        activated_emails.each do |email|
-          @friend = User.find_by_email(email)
-          if !friend_of?(@event, @friend)
-            make_membership()
-            @membership.update_membership_attributes(@friend)
-            UserMailer.membership_email(@friend.email, @event).deliver
+          activated_emails.each do |email|
+              @friend = User.find_by_email(email)
+              if !friend_of?(@event, @friend)
+                  make_membership()
+                  @membership.update_membership_attributes(@friend)
+                  UserMailer.membership_email(@friend.email, @event).deliver
+              end
           end
-        end
       end
-    end
 
     if @userinvited && !friend_of?(@event, @userinvited)
       make_membership()
       @membership.update_membership_attributes(@userinvited)
       @user.create_relationship(@userinvited)
       UserMailer.membership_email(@userinvited.email, @event).deliver
-      #redirect_to event_path(@event)
-      #return
     end
 
     if @userinvited
@@ -99,7 +95,6 @@ end
 
   def friend_of?(event, user)
       Membership.where(user_id: user.id, event_id: event.id).any?
-
   end
 
 
