@@ -15,19 +15,6 @@ class Membership < ActiveRecord::Base
   scope :admin, -> {where("admin = ?", true)}
   #scope :user, ->(user) {where(user: user)}
 
-  # when a user invites another user to their event this update the membership to have status as invited and the user_id of the user invited
-    def update_membership_attributes(user)
-      self.update_attributes(user_id: user.id, status: RSVP_INVITED)
-      self.save
-    end
-
-  #when a user invites and person that is not a current user of the site this creates a membership without a user_id and the staus invited
-  def new_usermembership
-    self.update_attribute(:status, RSVP_INVITED)
-    self.save
-  end
-
-
   # creates a token for new memberships
     def create_invitiation_token
       membership_token = Membership.new_token

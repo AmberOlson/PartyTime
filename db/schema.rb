@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823145956) do
+ActiveRecord::Schema.define(version: 20160824220643) do
 
   create_table "comments", force: true do |t|
     t.text     "text"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160823145956) do
 
   create_table "memberships", force: true do |t|
     t.boolean  "admin",             default: false
-    t.string   "status"
+    t.string   "status",            default: "Invited"
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"

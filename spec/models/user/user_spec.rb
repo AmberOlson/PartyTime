@@ -13,7 +13,7 @@ describe User do
 
       it "returns true when user has events they are going to" do
         user = FactoryGirl.create(:user)
-        membership = FactoryGirl.create(:membership)
+        membership = FactoryGirl.create(:membership,  status: Membership::RSVP_GOING)
         expect(user.has_going_memberships?).to be_truthy
       end
 

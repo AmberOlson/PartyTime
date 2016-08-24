@@ -20,7 +20,7 @@ describe Membership do
 
 
   context "when a user invites another user to the event" do
-    it "correctly update the membership with the invited status and the user_id" do
+    xit "correctly update the membership with the invited status and the user_id" do
       event = FactoryGirl.create(:event)
       membership =FactoryGirl.create(:membership, user_id: nil)
       user = FactoryGirl.create(:user)
@@ -31,7 +31,7 @@ describe Membership do
   end
 
   context "when a user invites a person not currently a member" do
-    it "correctly creates a membership with out a user id and and invited status" do
+    xit "correctly creates a membership with out a user id and and invited status" do
       event = FactoryGirl.create(:event)
       expect(event.title).to eq("Party11")
       user = FactoryGirl.create(:user)

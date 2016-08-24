@@ -26,7 +26,7 @@ FactoryGirl.define do
     event_id 1
     user_id 1
     admin true
-    status Membership::RSVP_GOING
+    status Membership::RSVP_INVITED
     invitiation_token "ABCTOKEN"
   end
 

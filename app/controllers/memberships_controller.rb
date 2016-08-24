@@ -24,16 +24,14 @@ class MembershipsController < ApplicationController
           activated_emails.each do |email|
               @friend = User.find_by_email(email)
               if !friend_of?(@event, @friend)
-                  make_membership()
-                  @membership.update_membership_attributes(@friend)
+                  make_membership(@friend)
                   UserMailer.membership_email(@friend.email, @event).deliver
               end
           end
       end
 
     if @userinvited && !friend_of?(@event, @userinvited)
-      make_membership()
-      @membership.update_membership_attributes(@userinvited)
+      make_membership(@userinvited)
       @user.create_relationship(@userinvited)
       UserMailer.membership_email(@userinvited.email, @event).deliver
     end
@@ -46,8 +44,7 @@ class MembershipsController < ApplicationController
 
     if !params[:user_email].blank?
       @newuser = params[:user_email].downcase
-      make_membership()
-      @membership.new_usermembership
+      @membership = @event.memberships.build()
       @membership.create_invitiation_token
       UserMailer.welcome_email(@newuser, @event, @membership).deliver
       flash[:notice] = "Email Sent"
@@ -87,8 +84,9 @@ end
     @event = Event.find(params[:event_id])
   end
 
-  def make_membership()
+  def make_membership(user)
     @membership = @event.memberships.build()
+    @membership.update_attributes(user_id: user.id)
     @membership.save
   end
 
