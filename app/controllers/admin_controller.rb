@@ -1,31 +1,22 @@
 class AdminController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_event
+    before_action :authenticate_user!
+    before_action :set_event
 
-  def new
-    @membership = Membership.where(:event_id => @event.id)
-  end
+    def new
+        @membership = Membership.where(:event_id => @event.id)
+    end
 
-  def create
-    #if request.post?
-      activated_ids = params[:activated].collect {|id| id.to_i} if params[:activated]
-     # seen_ids = params[:seen].collect {|id| id.to_i} if params[:seen]
-
-      #if seen_ids
+    def create
+        activated_ids = params[:activated].collect {|id| id.to_i} if params[:activated]
         activated_ids.each do |id|
-          r = Membership.find_by_id(id)
-          r.update_attribute(:admin, true)
-          r.save
+            Membership.update(id, {:admin => true})
         end
-     # end
-    #end
-    redirect_to @event
-  end
+        redirect_to @event
+    end
 
-  private
+    private
 
-  def set_event
-    @event = Event.find(params[:event_id])
-  end
-
+    def set_event
+        @event = Event.find(params[:event_id])
+    end
 end

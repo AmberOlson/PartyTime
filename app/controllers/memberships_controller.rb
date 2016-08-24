@@ -73,8 +73,7 @@ class MembershipsController < ApplicationController
   end
 
 def destroy
-  @membership = Membership.find(params[:id])
-  @membership.destroy
+  Membership.find(params[:id]).destroy
   redirect_to user_path(current_user)
 end
 
@@ -88,8 +87,8 @@ end
     @event = Event.find(params[:event_id])
   end
 
-  def make_membership
-    @membership = @event.memberships.build
+  def make_membership()
+    @membership = @event.memberships.build()
     @membership.save
   end
 
