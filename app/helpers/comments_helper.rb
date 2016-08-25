@@ -2,8 +2,8 @@ module CommentsHelper
   def comment_email_or_name(comment, user)
      if comment.user.name.nil?
        comment.user.email
-    else
+     else
       comment.user.name
-    end
+     end
   end
 end

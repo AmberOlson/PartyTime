@@ -23,14 +23,14 @@ class MembershipsController < ApplicationController
       if activated_emails
           activated_emails.each do |email|
               @friend = User.find_by_email(email)
-              if !friend_of?(@event, @friend)
+              if !member_of?(@event, @friend)
                   make_membership(@friend)
                   UserMailer.membership_email(@friend.email, @event).deliver
               end
           end
       end
 
-    if @userinvited && !friend_of?(@event, @userinvited)
+    if @userinvited && !member_of?(@event, @userinvited)
       make_membership(@userinvited)
       @user.create_relationship(@userinvited)
       UserMailer.membership_email(@userinvited.email, @event).deliver
@@ -90,7 +90,7 @@ end
     @membership.save
   end
 
-  def friend_of?(event, user)
+  def member_of?(event, user)
       Membership.where(user_id: user.id, event_id: event.id).any?
   end
 

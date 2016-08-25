@@ -29,7 +29,7 @@ describe 'editing events' do
     options[:date] ||='2015-05-09'
     options[:time] ||='2000-01-01 21:22:00 UTC'
     options[:description] ||="This is a party that I am having"
-    event= options[:event]
+
 
     expect(page).to have_content("Party11")
     click_link "Edit"
