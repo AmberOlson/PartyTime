@@ -6,7 +6,7 @@
 
 <div class="col-md-8">
   <h1> Invite Guests </h1>
-  <%= form_tag(event_memberships_path(@event), :method=>'post')  do %>
+  <%= form_for([@event, @event.memberships.build])  do |f| %>
 
   <p>
      Email:
@@ -27,7 +27,7 @@
    </div>
    <% end %>
 
-   <%= submit_tag 'Invite User' %>
+   <%= f.submit 'Invite User' %>
 
 
   <% end %>
