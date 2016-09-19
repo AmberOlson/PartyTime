@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824220643) do
+ActiveRecord::Schema.define(version: 20160919233523) do
 
   create_table "comments", force: true do |t|
     t.text     "text"
@@ -56,12 +56,12 @@ ActiveRecord::Schema.define(version: 20160824220643) do
   create_table "relationships", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "friend"
+    t.integer  "friend_id",      limit: 255
     t.integer  "user_id"
-    t.string   "classification", default: "Other"
+    t.string   "classification",             default: "Other"
   end
 
-  add_index "relationships", ["user_id", "friend"], name: "index_relationships_on_user_id_and_friend", unique: true
+  add_index "relationships", ["user_id", "friend_id"], name: "index_relationships_on_user_id_and_friend_id", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

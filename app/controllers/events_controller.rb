@@ -26,7 +26,7 @@ class EventsController < ApplicationController
       flash[:notice] = "Event successfully created"
       redirect_to @event
     else
-      flash[:notice] = "There was a problem adding the event."
+      flash.now[:notice] = "There was a problem adding the event."
       render action: :new
     end
   end

@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
 #creates an initial relationship between and user and an invited friend.
   def create_relationship(user_invited)
-    relationships.create!(friend: user_invited.email)
+    relationships.create!(friend: user_invited)
   end
 
   private

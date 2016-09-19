@@ -32,7 +32,7 @@ FactoryGirl.define do
 
   factory :relationship do
     user_id 1
-    friend "user1@example.com"
+    friend 2
     classification Relationship::REL_FAMILY
   end
 
