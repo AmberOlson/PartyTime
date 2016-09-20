@@ -3,9 +3,12 @@ describe 'editing relationship' do
   before do
     login_user
     User.create!(:email => "user1@example.com", :password => "password123")
+    User.create!(:email => "relationship2@email.com", :password => "password123")
+    User.create!(:email => "relationship3@email.com", :password => "password123")
+
     FactoryGirl.create(:relationship)
-    FactoryGirl.create(:relationship, :friend => "relationship2@email.com" )
-    FactoryGirl.create(:relationship, :friend => "relationship3@email.com" )
+    FactoryGirl.create(:relationship, :friend_id => 3 )
+    FactoryGirl.create(:relationship, :friend_id => 4 )
     FactoryGirl.create(:event)
   end
 
