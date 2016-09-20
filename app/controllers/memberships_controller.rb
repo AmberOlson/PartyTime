@@ -18,14 +18,14 @@ class MembershipsController < ApplicationController
     @userinvited = User.find_by(email: params[:user_email].downcase)
     @user = current_user
 
-      activated_emails = params[:activated].collect if params[:activated]
+      activated_membership_id = params[:activated].collect if params[:activated]
 
-      if activated_emails
-          activated_emails.each do |email|
+      if activated_membership_id
+          activated_membership_id.each do |id|
               #@friend = User.where(relationship_id = email)
-              @relationship = Relationship.find_by_id(email)
-              @userf = @relationship.friend_id
-              @friend = User.find_by_id(@userf)
+              #@relationship = Relationship.where(id: email).pluck(:friend_id)
+              #@userf = @relationship.friend_id
+              @friend = User.find_by_id(Relationship.where(id: id).pluck(:friend_id))
 
 
               if !member_of?(@event, @friend)
