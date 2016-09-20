@@ -22,7 +22,12 @@ class MembershipsController < ApplicationController
 
       if activated_emails
           activated_emails.each do |email|
-              @friend = User.find_by_email(email)
+              #@friend = User.where(relationship_id = email)
+              @relationship = Relationship.find_by_id(email)
+              @userf = @relationship.friend_id
+              @friend = User.find_by_id(@userf)
+
+
               if !member_of?(@event, @friend)
                   make_membership(@friend)
                   UserMailer.membership_email(@friend.email, @event).deliver

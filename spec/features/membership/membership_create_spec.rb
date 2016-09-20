@@ -36,7 +36,7 @@ describe 'creating memberships' do
     expect(page).to have_content("User already invited")
   end
 
-  it "shows email message when inviting an person that is ot a user yet" do
+  it "shows email message when inviting an person that is not a user yet" do
     invite_user user_email:"user3@example.com"
     expect(page).to have_content("Email Sent")
   end
@@ -45,7 +45,8 @@ describe 'creating memberships' do
     FactoryGirl.create(:relationship)
     visit '/events/1'
     click_link "Invite Guest"
-    find(:css, "#activated_[value='user1@example.com']").set(true)
+    #find(:css, "#activated_[value='example@email.com']").set(true)
+    check('user1@example.com')
     click_button "Invite User"
     expect(page).to have_content("user1@example.com")
   end
