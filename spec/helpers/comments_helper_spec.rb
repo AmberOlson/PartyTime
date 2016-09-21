@@ -14,17 +14,17 @@ RSpec.describe CommentsHelper, type: :helper do
   describe "#user_email" do
       context "when the user has a name" do
         it "returns the user's name" do
-          user = FactoryGirl.create(:user, :name => "foo")
+          FactoryGirl.create(:user, :name => "foo")
           comment = FactoryGirl.create(:comment)
-          expect(helper.comment_email_or_name(comment, user)).to eq("foo")
+          expect(helper.comment_email_or_name(comment)).to eq("foo")
         end
       end
 
       context "when the user has no name" do
         it "returns email" do
-          user = FactoryGirl.create(:user)
+          FactoryGirl.create(:user)
           comment = FactoryGirl.create(:comment)
-          expect(helper.comment_email_or_name(comment, user)).to eq("user1@example.com")
+          expect(helper.comment_email_or_name(comment)).to eq("user1@example.com")
         end
       end
     end

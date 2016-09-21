@@ -13,7 +13,7 @@
 
           <% if membership.user_id? && !membership.admin%>
             <%= check_box_tag 'activated[]', membership.id -%>
-            <%= membership_email_or_name(membership, @user) %>
+            <%= membership_email_or_name(membership) %>
           </li>
         <% end %>
       <% end %>
