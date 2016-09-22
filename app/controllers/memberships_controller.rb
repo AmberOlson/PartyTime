@@ -1,9 +1,9 @@
 class MembershipsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:new, :create, :update]
+  before_action :set_user, only: [:new, :create]
 
   def new
-    @user = current_user
     @membership = Membership.where(event_id: @event.id, user_id: @user.id).first
     @relationship = Relationship.where(user_id: current_user)
     @classifications = [{ id: 'classification_other', class: 'classification_other', title: 'Other:', classification: Relationship::REL_OTHER },
@@ -15,12 +15,13 @@ class MembershipsController < ApplicationController
 
   def create
     @userinvited = User.find_by(email: params[:user_email].downcase)
-    @user = current_user
-    activated_membership_id = params[:activated].collect if params[:activated]
-    invite_friends(activated_membership_id) if activated_membership_id
-    invite_a_user if @userinvited && !member_of?(@event, @userinvited)
-    invite_a_user_again if @userinvited
-    invite_a_new_user unless params[:user_email].blank?
+
+    invite_friends(params[:activated].collect) if params[:activated]
+    if @userinvited
+      invite_a_user
+    elsif !params[:user_email].blank?
+      invite_a_new_user
+    end
     redirect_to event_path(@event)
   end
 
@@ -53,6 +54,10 @@ class MembershipsController < ApplicationController
     @event = Event.find(params[:event_id])
   end
 
+  def set_user
+    @user = current_user
+  end
+
   def make_membership(user)
     @membership = @event.memberships.build
     @membership.update_attributes(user_id: user.id)
@@ -74,14 +79,13 @@ class MembershipsController < ApplicationController
   end
 
   def invite_a_user
-    make_membership(@userinvited)
-    @user.create_relationship(@userinvited)
-    UserMailer.membership_email(@userinvited.email, @event).deliver
-  end
-
-  def invite_a_user_again
-    flash[:notice] = 'User already invited'
-    redirect_to new_event_membership_path(@event)
+    if !member_of?(@event, @userinvited)
+      make_membership(@userinvited)
+      @user.create_relationship(@userinvited)
+      UserMailer.membership_email(@userinvited.email, @event).deliver
+    else
+      flash[:notice] = 'User already invited'
+    end
   end
 
   def invite_a_new_user
