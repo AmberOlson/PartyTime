@@ -7,6 +7,6 @@ class UserReminderEmailWorker
     user = User.find(user_id)
 
     UserMailer.reminder_email(user.email, event).deliver
-
   end
+  
 end
