@@ -6,7 +6,7 @@ describe 'creating relationship' do
     FactoryGirl.create(:event)
   end
 
-  def invite_user(options ={})
+  def invite_user(options = {})
     options[:user_email] ||= 'user1@example.com'
 
     visit '/events/1'

@@ -7,8 +7,6 @@ class User < ActiveRecord::Base
 
   has_many :memberships, dependent: :destroy
   has_many :relationships, dependent: :destroy
-
-
   has_many :events, through: :memberships, dependent: :destroy
   has_many :invited_events, -> { merge(Membership.invited).uniq }, through: :memberships, source: :event
   has_many :going_events, -> { merge(Membership.going).uniq }, through: :memberships, source: :event

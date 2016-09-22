@@ -16,6 +16,6 @@ class Event < ActiveRecord::Base
   end
 
   def event_invited_memberships?
-    memberships.invited.size > 0
+    !memberships.invited.empty?
   end
 end

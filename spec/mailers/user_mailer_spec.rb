@@ -61,7 +61,7 @@ RSpec.describe UserMailer, type: :mailer do
     it 'assigns @confirmation_url' do
       expect(mail.body.encoded).to match('http://localhost/users/sign_in')
     end
-end
+  end
 
 
 

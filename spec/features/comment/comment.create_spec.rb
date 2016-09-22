@@ -7,7 +7,7 @@ describe 'creating comments' do
     login_user
   end
 
-  def create_comment (options ={})
+  def create_comment (options = {})
     options[:text] ||= 'I am excited to go to the party'
 
     visit '/events/1'

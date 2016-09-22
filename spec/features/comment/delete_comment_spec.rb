@@ -11,7 +11,7 @@ describe 'deleting comments' do
     comment = FactoryGirl.create(:comment)
     visit '/events/1'
     expect(Comment.count).to eq(1)
-    within("#comment_#{ comment.id }") do
+    within("#comment_#{comment.id}") do
       click_link 'Destroy'
     end
     expect(Comment.count).to eq(0)
