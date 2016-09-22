@@ -41,11 +41,16 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'pg', '0.18.4'
 end
 
 group :test do
   gem 'capybara', '~> 2.2.0'
   gem 'shoulda-matchers', '~> 2.8.0'
+end
+
+group :production do
+  gem 'pg', '0.18.4'
 end
 
 # Use ActiveModel has_secure_password
