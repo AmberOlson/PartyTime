@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 describe 'editing membership' do
 
@@ -6,18 +6,18 @@ describe 'editing membership' do
     FactoryGirl.create(:event)
     FactoryGirl.create(:membership, admin: false, status: Membership::RSVP_INVITED)
 
-    User.create!(:email => "example@email.com", :password => "password123")
+    User.create!(email: 'example@email.com', password: 'password123')
     visit new_user_session_path
-    fill_in 'Email', :with => "example@email.com"
-    fill_in 'Password', :with => "password123"
-    click_button "Log in"
+    fill_in 'Email', with: 'example@email.com'
+    fill_in 'Password', with: 'password123'
+    click_button 'Log in'
 
   end
 
-  it "changes the status from invited to going" do
-    visit "/events/1"
-    click_button "Going"
-    expect(page).to have_content("You are now attending this event")
+  it 'changes the status from invited to going' do
+    visit '/events/1'
+    click_button 'Going'
+    expect(page).to have_content('You are now attending this event')
   end
 
 end

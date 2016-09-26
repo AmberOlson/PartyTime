@@ -2,7 +2,7 @@
 <h3> Going: </h3>
 <ul>
   <% @event.memberships.going.each do |membership| %>
-      <li><%= membership_email_or_name(membership, @user) %></li>
+      <li><%= membership_email_or_name(membership) %></li>
   <% end %>
   </ul>
   <% if @event.event_invited_memberships? %>
@@ -10,7 +10,7 @@
     <ul>
       <% @event.memberships.invited.each do |membership| %>
         <% if membership.user %>
-          <li><%= membership_email_or_name(membership, @user) %></li>
+          <li><%= membership_email_or_name(membership) %></li>
         <% end %>
       <% end %>
     </ul>

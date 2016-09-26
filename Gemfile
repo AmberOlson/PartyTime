@@ -41,7 +41,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  gem 'pg', '0.18.4'
 end
 
 group :test do
