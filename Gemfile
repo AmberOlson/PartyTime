@@ -9,7 +9,7 @@ gem 'fog',                     '1.36.0'
 
 gem 'sidekiq'
 gem 'whenever', :require => false
- gem 'pg'
+ gem 'pg', '0.18.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
