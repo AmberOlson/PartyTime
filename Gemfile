@@ -9,6 +9,7 @@ gem 'fog',                     '1.36.0'
 
 gem 'sidekiq'
 gem 'whenever', :require => false
+ gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -49,7 +50,6 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.18.4'
 end
 
 # Use ActiveModel has_secure_password

@@ -326,7 +326,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   mini_magick (= 3.8.0)
-  pg (= 0.18.4)
+  pg
   pry-rails
   pry-stack_explorer
   quiet_assets
