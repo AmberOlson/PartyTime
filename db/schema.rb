@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20160919233523) do
   create_table "relationships", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "friend_id",      limit: 255
+    t.integer  "friend_id"
     t.integer  "user_id"
     t.string   "classification",             default: "Other"
   end
