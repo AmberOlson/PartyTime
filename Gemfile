@@ -46,6 +46,9 @@ end
 group :test do
   gem 'capybara', '~> 2.2.0'
   gem 'shoulda-matchers', '~> 2.8.0'
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
 end
 
 group :production do
