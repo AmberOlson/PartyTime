@@ -15,7 +15,7 @@ describe 'layouts/_header' do
 
   it 'displays log in link when not logged in' do
     render
-    expect(rendered).to include('Log in')
+    expect(rendered).to include('Log In')
     expect(rendered).to_not include('User Profile')
   end
 end

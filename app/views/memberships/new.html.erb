@@ -8,6 +8,7 @@
   <h1> Invite Guests </h1>
   <%= form_for([@event, @event.memberships.build])  do |f| %>
 
+
   <p>
      Email:
      <%= email_field_tag "user_email" %>

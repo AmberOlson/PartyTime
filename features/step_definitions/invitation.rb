@@ -23,9 +23,9 @@ Then(/^I see "([^"]*)" within "([^"]*)"$/) do |text, class_name|
     expect(page).to have_css(class_name, text: text)
 end
 
-Then(/^Alex should receive an email$/) do
+Then(/^Alex should receive an email with body "([^"]*)"$/) do |body_text|
   email = ActionMailer::Base.deliveries.first
   email.from = "from@example.com"
   email.to = "tucker.al@gmail.com"
-  email.body = "You have been invited to"
+  email.body = body_text
 end
