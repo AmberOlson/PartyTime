@@ -1,9 +1,20 @@
 require 'open-uri'
 require 'json'
-require 'sendgrid-ruby'
-include SendGrid
+
 
 class UserMailer < ActionMailer::Base
+
+    require 'mail'
+Mail.defaults do
+  delivery_method :smtp, { :address   => "smtp.sendgrid.net",
+                           :port      => 587,
+                           :domain    => "immense-basin-81929.herokuapp.com",
+                           :user_name => "app56928747@heroku.com",
+                           :password  => "wcbmbnsx7832",
+                           :authentication => 'plain',
+                           :enable_starttls_auto => true }
+end
+
   default from: 'from@example.com'
 
   def welcome_email(user, event, membership)
@@ -35,11 +46,5 @@ class UserMailer < ActionMailer::Base
       return parsed_json
     end
   end
-
-  sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
-response = sg.client.mail._('send').post(request_body: mail.to_json)
-puts response.status_code
-puts response.body
-puts response.headers
 
 end
