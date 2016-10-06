@@ -9,9 +9,10 @@ And I am logged in
 And I have created an event
 And Alex is a valid user
 When I go to the Invite Guest page
-And fill in "user_email" with "Tucker.al@gmail.com"
+And fill in "user_email" with "tucker.al@gmail.com"
 And click button "Invite User"
 Then I see "tucker.al@gmail.com"
+And Alex should receive an email
 
 Scenario: Go to page
 Given I am valid user
