@@ -23,9 +23,8 @@ Then(/^I should see "([^"]*)" within the "([^"]*)" list$/) do |text, class_name|
   expect(page).to have_css("." + class_name + "_membership", text: text)
 end
 
-Then(/^Alex should receive an email with body "([^"]*)"$/) do |body_text|
-  email = ActionMailer::Base.deliveries.first
-  email.from = "from@example.com"
-  email.to = "tucker.al@gmail.com"
-  email.body = body_text
+Then(/^"([^"]*)" should receive an email with body "([^"]*)"$/) do |email, body_text|
+    email = ActionMailer::Base.deliveries.first
+    expect(email.to).to eq(['alextucker@gmail.com'])
+    expect(email.body.encoded).to match (body_text)
 end

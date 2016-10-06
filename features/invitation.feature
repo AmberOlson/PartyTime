@@ -20,7 +20,7 @@ When I go to the Invite Guest page
 And fill in "user_email" with "alextucker@gmail.com"
 And press "Invite User"
 Then I should see "alextucker@gmail.com" within the "invited" list
-And Alex should receive an email with body "You have been invited to"
+And "alextucker@gmail.com" should receive an email with body "You have been invited to"
 
 Scenario: Amber invites a guest with invalid email to an event
 Given "Amber Olson" is valid user
@@ -39,4 +39,4 @@ And I have created an event
 When I go to the Invite Guest page
 And fill in "user_email" with "alextucker@gmail.com"
 And press "Invite User"
-Then Alex should receive an email with body "Welcome to partyTime.com"
+Then "alextucker@gmail.com" should receive an email with body "Welcome to partyTime.com"
