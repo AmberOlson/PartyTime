@@ -1,10 +1,15 @@
 <div class = "event_membership",  id="event_membership" >
+
+<div class="going_membership">
 <h3> Going: </h3>
-<ul>
-  <% @event.memberships.going.each do |membership| %>
-      <li><%= membership_email_or_name(membership) %></li>
-  <% end %>
-  </ul>
+    <ul>
+      <% @event.memberships.going.each do |membership| %>
+          <li><%= membership_email_or_name(membership) %></li>
+      <% end %>
+      </ul>
+  </div>
+
+ <div class="invited_membership">
   <% if @event.event_invited_memberships? %>
     <h3> Invited: </h3>
     <ul>
@@ -15,4 +20,5 @@
       <% end %>
     </ul>
   <% end %>
+  </div>
 </div>

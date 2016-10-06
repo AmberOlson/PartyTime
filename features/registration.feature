@@ -1,13 +1,13 @@
 Feature: Singing up
-As a
-I want our users to be greeted when they visit our site
-So that they have a better experience
+As a party planner
+I want register for PartyTime with my email and a secure password
+So I can use the sites features safely
+
 
 Scenario: User views signs up page to PartyTime
 When I go to the signup page
 Then I see "Log in"
 
-# toDO make this into a chart
 Scenario: User registers for PartyTime
 When I go to the signup page
 And fill in "Email" with "amberolson@trentu.ca"

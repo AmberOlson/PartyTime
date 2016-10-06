@@ -1,7 +1,8 @@
 Feature: Sending event invites
 As a party planner
-I want to invite people to my party
-So that they know it is happening
+I want to invite people to my party and have RSVP system
+an email inform them of the party
+So my both me and my guest are informed of what is happening
 
 Scenario: Amber invites Alex, a Partytime user, to an event
 Given "Amber Olson" is valid user
@@ -11,7 +12,7 @@ And "Alex Tucker" is valid user
 When I go to the Invite Guest page
 And fill in "user_email" with "alextucker@gmail.com"
 And click button "Invite User"
-Then I see "alextucker@gmail.com"
+Then I see "alextucker@gmail.com" within ".invited_membership"
 And Alex should receive an email
 
 Scenario: Go to page
