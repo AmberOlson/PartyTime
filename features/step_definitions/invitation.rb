@@ -19,8 +19,8 @@ When(/^I go to the Invite Guest page$/) do
   visit new_event_membership_path(@event)
 end
 
-Then(/^I should see "([^"]*)" within "([^"]*)"$/) do |text, class_name|
-    expect(page).to have_css(class_name, text: text)
+Then(/^I should see "([^"]*)" within the "([^"]*)" list$/) do |text, class_name|
+  expect(page).to have_css("." + class_name + "_membership", text: text)
 end
 
 Then(/^Alex should receive an email with body "([^"]*)"$/) do |body_text|

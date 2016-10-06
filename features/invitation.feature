@@ -18,8 +18,8 @@ And I have created an event
 And "Alex Tucker" is valid user
 When I go to the Invite Guest page
 And fill in "user_email" with "alextucker@gmail.com"
-And click button "Invite User"
-Then I should see "alextucker@gmail.com" within ".invited_membership"
+And press "Invite User"
+Then I should see "alextucker@gmail.com" within the "invited" list
 And Alex should receive an email with body "You have been invited to"
 
 Scenario: Amber invites a guest with invalid email to an event
@@ -28,7 +28,7 @@ And I am logged in
 And I have created an event
 When I go to the Invite Guest page
 And fill in "user_email" with "alextuckr@h"
-And click button "Invite User"
+And press "Invite User"
 Then I should see "error"
 
 
@@ -38,5 +38,5 @@ And I am logged in
 And I have created an event
 When I go to the Invite Guest page
 And fill in "user_email" with "alextucker@gmail.com"
-And click button "Invite User"
+And press "Invite User"
 Then Alex should receive an email with body "Welcome to partyTime.com"
