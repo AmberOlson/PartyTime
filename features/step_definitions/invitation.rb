@@ -19,7 +19,7 @@ When(/^I go to the Invite Guest page$/) do
   visit new_event_membership_path(@event)
 end
 
-Then(/^I see "([^"]*)" within "([^"]*)"$/) do |text, class_name|
+Then(/^I should see "([^"]*)" within "([^"]*)"$/) do |text, class_name|
     expect(page).to have_css(class_name, text: text)
 end
 

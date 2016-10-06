@@ -9,7 +9,7 @@ Given "Amber Olson" is valid user
 And I am logged in
 And I have created an event
 When I go to the Invite Guest page
-Then I see "friends you already have!"
+Then I should see "friends you already have!"
 
 Scenario: Amber invites Alex, a Partytime user, to an event
 Given "Amber Olson" is valid user
@@ -19,7 +19,7 @@ And "Alex Tucker" is valid user
 When I go to the Invite Guest page
 And fill in "user_email" with "alextucker@gmail.com"
 And click button "Invite User"
-Then I see "alextucker@gmail.com" within ".invited_membership"
+Then I should see "alextucker@gmail.com" within ".invited_membership"
 And Alex should receive an email with body "You have been invited to"
 
 Scenario: Amber invites a guest with invalid email to an event
@@ -29,7 +29,7 @@ And I have created an event
 When I go to the Invite Guest page
 And fill in "user_email" with "alextuckr@h"
 And click button "Invite User"
-Then I see "error"
+Then I should see "error"
 
 
 Scenario: Amber invites Alex, not a Partytime user, to an event

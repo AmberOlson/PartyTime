@@ -5,4 +5,4 @@ So that they have a better experience
 
 Scenario: User sees the welcome message
 When I go to the homepage
-Then I see "Welcome to PartyTime"
+Then I should see "Welcome to PartyTime"
