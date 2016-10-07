@@ -22,11 +22,11 @@ Given(/^she wants to invite "([^"]*)" a user of the site$/) do |name|
   FactoryGirl.create(:user, email: gmail)
 end
 
-When(/^click button "([^"]*)"$/) do |button|
+When(/^clicks the button "([^"]*)"$/) do |button|
   click_button button
 end
 
-When(/^fill in the email with "([^"]*)"$/) do |email|
+When(/^fills in the email with "([^"]*)"$/) do |email|
   fill_in "user_email", with: email
 end
 
