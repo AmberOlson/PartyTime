@@ -83,13 +83,11 @@ PartyTime::Application.configure do
 config.action_mailer.default_url_options = {host: 'www.example.com'}
 config.action_mailer.delivery_method = :smtp
 
-  Mail.defaults do
-    delivery_method :smtp, { :address   => "smtp.sendgrid.net",
+config.action_mailer.smtp_settinga = { :address   => "smtp.sendgrid.net",
                              :port      => 587,
                              :domain    => "immense-basin-81929.herokuapp.com",
                              :user_name => "app56928747@heroku.com",
                              :password  => "wcbmbnsx7832",
                              :authentication => 'plain',
                              :enable_starttls_auto => true }
-  end
 end
