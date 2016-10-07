@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'json'
-require 'mail'
 
 class UserMailer < ActionMailer::Base
 
