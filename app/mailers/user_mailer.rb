@@ -1,19 +1,8 @@
 require 'open-uri'
 require 'json'
-
+require 'mail'
 
 class UserMailer < ActionMailer::Base
-
-    require 'mail'
-Mail.defaults do
-  delivery_method :smtp, { :address   => "smtp.sendgrid.net",
-                           :port      => 587,
-                           :domain    => "immense-basin-81929.herokuapp.com",
-                           :user_name => "app56928747@heroku.com",
-                           :password  => "wcbmbnsx7832",
-                           :authentication => 'plain',
-                           :enable_starttls_auto => true }
-end
 
   default from: 'from@example.com'
 
