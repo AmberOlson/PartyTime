@@ -1,10 +1,10 @@
 Feature: Sending event invites
 As a party planner
-I want to invite people to my party and have RSVP system
-and have an email inform them of the party
-So my both me and my guest are informed of what is happening
+I want to invite people to my party and have an RSVP system
+and have an email inform them of the party invite
+So both me and my guest are informed of what is happening
 
-Scenario: Amber an event planner wants to invite people to the party
+Scenario: Amber, an event planner, wants to invite people to the party
 Given "Amber Olson" is a logged in user
 And she has an event
 When she visits the Invite Guest page
