@@ -18,7 +18,11 @@ When she visits the Invite Guest page
 And fills in the email with "alextucker@gmail.com"
 And clicks the button "Invite User"
 Then she will see "alextucker@gmail.com" within the "invited" list
-And "alextucker@gmail.com" should receive an email with body "You have been invited to"
+And "alextucker@gmail.com" should receive 2 emails
+And I open the email
+And they should see "You have been invited to an event" in the email subject
+And they should see "You have been invited to" in the email body
+And they click the first link in the email
 
 Scenario: Amber invites a guest with invalid email to an event
 When she visits the Invite Guest page
