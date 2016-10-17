@@ -15,8 +15,16 @@ class UserMailer < ActionMailer::Base
   def membership_email(user, event)
     @user = user
     @event = event
-    mail(to: @user, subject: 'You have been invited to an event')
+    #mail(to: @user, subject: 'You have been invited to an event')
+
+    RestClient.post "https://api:api:key-52542e3e32bb2ce0bc90532a295b68f4"\
+    "@api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages",
+    :from => "PartyTime <postmaster@sandboxa57f7da321ce41bf9aba1a361c67ca86.mailgun.org>",
+    :to => @user,
+    :subject => 'You have been invited to an event',
+    :text => "Testing some Mailgun awesomness!"
   end
+
 
   def reminder_email(user, event)
     @user = user
