@@ -35,8 +35,8 @@ PartyTime::Application.configure do
     :authentication => :plain,
     :address => "smtp.mailgun.org",
     :port => 587,
-    :domain => "sandboxa57f7da321ce41bf9aba1a361c67ca86.mailgun.org",
+    :domain => "app836166d4bcff49e78fcc22ca33a7fb21.mailgun.org",
     :user_name => "postmaster@MYDOMAIN.mailgun.org",
-    :password => "8c494b59fa243a3208f7b038966d299d"
+    :password => "c7b797c3690afc69153c06f90f2342a7"
 }
 end
