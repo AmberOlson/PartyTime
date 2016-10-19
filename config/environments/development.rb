@@ -29,4 +29,14 @@ PartyTime::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "sandboxa57f7da321ce41bf9aba1a361c67ca86.mailgun.org",
+    :user_name => "postmaster@MYDOMAIN.mailgun.org",
+    :password => "8c494b59fa243a3208f7b038966d299d"
+}
 end
