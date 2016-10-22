@@ -78,6 +78,7 @@ PartyTime::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  config.routes.default_url_options[:host] = 'https://immense-basin-81929.herokuapp.com'
 
   ActionMailer::Base.smtp_settings = {
   :port           => ENV['MAILGUN_SMTP_PORT'],
