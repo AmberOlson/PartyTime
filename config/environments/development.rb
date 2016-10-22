@@ -30,13 +30,4 @@ PartyTime::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :authentication => :plain,
-    :address => "smtp.mailgun.org",
-    :port => 587,
-    :domain => "app836166d4bcff49e78fcc22ca33a7fb21.mailgun.org",
-    :user_name => "postmaster@MYDOMAIN.mailgun.org",
-    :password => "c7b797c3690afc69153c06f90f2342a7"
-}
 end
