@@ -3,7 +3,7 @@ require 'json'
 
 class UserMailer < ActionMailer::Base
 
-  default from: "me@MYDOMAIN.com"
+  default from: "me@app836166d4bcff49e78fcc22ca33a7fb21.mailgun.org"
 
   def welcome_email(user, event, membership)
     @user = user
