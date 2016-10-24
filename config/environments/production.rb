@@ -81,13 +81,22 @@ PartyTime::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   ActionMailer::Base.smtp_settings = {
-  :port           => ENV['MAILGUN_SMTP_PORT'],
-  :address        => ENV['MAILGUN_SMTP_SERVER'],
-  :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-  :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-  :domain         => 'yourapp.heroku.com',
-  :authentication => :plain,
-}
-ActionMailer::Base.delivery_method = :smtp
+      :port           => ENV['MAILGUN_SMTP_PORT'],
+      :address        => ENV['MAILGUN_SMTP_SERVER'],
+      :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+      :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+      :domain         => 'yourapp.heroku.com',
+      :authentication => :plain,
+  }
+  ActionMailer::Base.delivery_method = :smtp
 
+end
+
+
+Sidekiq.configure_server do |config|
+  config.redis = { url: ENV["REDIS_URL"] }
+end
+
+Sidekiq.configure_client do |config|#
+   config.redis = { url: ENV["REDIS_URL"] }
 end
